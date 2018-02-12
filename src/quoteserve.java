@@ -182,9 +182,13 @@ public class quoteserve
      */
     private static void addQuote(){
         // Get quote text and check if its at least 3 words
-        String quoteText = promptUser("Type in the quote text (Must be at least 3 words)");
+        String quoteText = promptUser("Type in the quote text (Must be at least 3 words and not contain > or <)");
         if(quoteText.split(" ").length < 3){
             System.out.println("Quote must be at least 3 words");
+            return;
+        }
+        else if(quoteText.contains("<") || quoteText.contains(">")){
+            System.out.println("Quote must not contain < or >");
             return;
         }
         // Get quote author
